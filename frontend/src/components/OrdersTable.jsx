@@ -45,11 +45,9 @@ const OrdersTable = ({
 
     <th className="col-source">Order Source</th>
 
-    {detailedView && (
-      <>
+    
         <th>Job Owner</th>
-      </>
-    )}
+      
 
     <th className="col-assign">Assign Person</th>
 
@@ -87,11 +85,9 @@ const OrdersTable = ({
 
       <td>{order.orderSource || '—'}</td>
 
-      {detailedView && (
-        <>
+      
           <td>{order.jobOwner || '—'}</td>
-        </>
-      )}
+        
 
       <td>{order.assignPerson || '—'}</td>
 
