@@ -46,7 +46,7 @@ const OrdersTable = ({
     <th className="col-source">Order Source</th>
 
     
-        <th>Job Owner</th>
+     <th className="col-owner">Job Owner</th>
       
 
     <th className="col-assign">Assign Person</th>
