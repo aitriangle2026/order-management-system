@@ -5,6 +5,7 @@ import {
   Loader,
   CheckCircle2,
   AlertTriangle,
+  XCircle,
 } from 'lucide-react';
 
 const CARD_DEFS = [
@@ -41,6 +42,15 @@ const CARD_DEFS = [
     statusValue: null,
     getValue: (s) => s.overdue ?? 0,
   },
+
+  {
+  key: 'cancelled',
+  label: 'Cancelled',
+  icon: XCircle,
+  accent: 'cancelled',
+  statusValue: 'Cancelled',
+  getValue: (s) => s.byStatus?.Cancelled ?? 0,
+},
 ];
 
 const SummaryCards = ({ summary, loading, activeStatus, onToggleStatus }) => {
