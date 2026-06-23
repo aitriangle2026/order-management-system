@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'ordermanagement-production-2dc1.up.railway.app';
+const API_URL = 'https://ordermanagement-production-2dc1.up.railway.app/';
 
 export const JOB_STATUSES = [
   'Active',
