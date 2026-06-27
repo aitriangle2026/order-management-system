@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { login } from '../api/auth';
 import tclLogo from '../assets/a2.png';
+import { Link } from "react-router-dom";
 
 import './auth.css';
 
@@ -85,12 +86,32 @@ export default function Login({ onLogin, onRegister }) {
               </div>
             </div>
 
-            <div className="auth-btn-spacer" />
+            <div
+  style={{
+    display: "flex",
+    justifyContent: "flex-end",
+    marginBottom: "18px",
+  }}
+>
+  <Link
+    to="/forgot-password"
+    style={{
+      fontSize: "14px",
+      textDecoration: "none",
+      color: "#4f46e5",
+      fontWeight: 500,
+    }}
+  >
+    Forgot Password?
+  </Link>
+</div>
 
-            <button type="submit" className="auth-btn-primary" disabled={loading}>
-              <i className="ti ti-login" aria-hidden="true" />
-              {loading ? 'Signing in…' : 'Sign in to workspace'}
-            </button>
+<button
+  type="submit"
+  className="auth-btn-primary"
+  disabled={loading}
+><i className="ti ti-login" aria-hidden="true" />
+  {loading ? "Signing in..." : "Sign in to workspace"}</button>
           </form>
 
           <div className="auth-step-dots">

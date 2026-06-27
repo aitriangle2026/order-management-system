@@ -1047,3 +1047,12 @@ button {
 .orders-table td {
   word-break: break-word;
 }
+.auth-success{
+    margin-bottom:20px;
+    padding:14px 16px;
+    border-radius:12px;
+    background:#e8fff2;
+    color:#0f9d58;
+    border:1px solid #b7f0ce;
+    font-weight:500;
+}
