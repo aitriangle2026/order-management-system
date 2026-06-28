@@ -9,7 +9,11 @@ async function createAdmin() {
     const password = 'admin123';
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await Admin.create({ username, password: hashedPassword });
+    await Admin.create({
+    username,
+    email: "trianglewebserver@gmail.com",
+    password: hashedPassword,
+});
     console.log('✅ Admin created successfully');
   } catch (err) {
     console.error(err);
