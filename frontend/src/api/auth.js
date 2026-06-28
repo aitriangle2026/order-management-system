@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = "https://triangle-order-management.netlify.app/api/auth";
+const API_URL =
+  "https://ordermanagement-production-2dc1.up.railway.app/api/auth";
 
 export const login = async (
   username,
