@@ -10,6 +10,27 @@ const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 
+const transporter = require("./config/mail");
+
+app.get("/api/test-email", async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: `"Triangle Creative Lab" <${process.env.EMAIL_FROM}>`,
+      to: process.env.EMAIL_FROM,
+      subject: "Test Email",
+      text: "This is a test email from Railway.",
+    });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: err.message,
+      code: err.code,
+    });
+  }
+});
+
 connectDB();
 
 app.use(cors());
