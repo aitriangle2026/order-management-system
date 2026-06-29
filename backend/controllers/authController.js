@@ -56,7 +56,7 @@ const forgotPassword = async (req, res) => {
       `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
     await transporter.sendMail({
-  from: process.env.EMAIL_USER,
+  from: `"Triangle Creative Lab" <${process.env.EMAIL_FROM}>`,
 
       to: admin.email,
 
