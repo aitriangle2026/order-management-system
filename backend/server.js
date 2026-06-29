@@ -9,7 +9,30 @@ const authRoutes = require('./routes/authRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
+const net = require("net");
 
+app.get("/smtp-test", (req, res) => {
+  const socket = net.createConnection(
+    587,
+    "smtp-relay.brevo.com"
+  );
+
+  socket.setTimeout(10000);
+
+  socket.on("connect", () => {
+    socket.destroy();
+    res.send("SMTP port is reachable");
+  });
+
+  socket.on("timeout", () => {
+    socket.destroy();
+    res.status(500).send("Connection timeout");
+  });
+
+  socket.on("error", (err) => {
+    res.status(500).send(err.message);
+  });
+});
 const transporter = require("./config/mail");
 
 app.get("/api/test-email", async (req, res) => {
