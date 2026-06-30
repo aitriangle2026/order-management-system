@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require("crypto");
 
-const transporter = require("../config/mail");
+const axios = require("axios");
 
 const login = async (req, res) => {
   try {
@@ -55,25 +55,33 @@ const forgotPassword = async (req, res) => {
     const resetLink =
       `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
-    await transporter.sendMail({
-  from: `"Triangle Creative Lab" <${process.env.EMAIL_FROM}>`,
-
-      to: admin.email,
-
-      subject: "Reset your password",
-
-      html: `
-        <h2>Password Reset</h2>
-
-        <p>You requested a password reset.</p>
-
-        <a href="${resetLink}">
-            Reset Password
-        </a>
-
-        <p>This link expires in 15 minutes.</p>
-      `,
-    });
+    await axios.post(
+  "https://api.brevo.com/v3/smtp/email",
+  {
+    sender: {
+      name: "Triangle Creative Lab",
+      email: process.env.EMAIL_FROM,
+    },
+    to: [
+      {
+        email: admin.email,
+      },
+    ],
+    subject: "Reset your password",
+    htmlContent: `
+      <h2>Password Reset</h2>
+      <p>You requested a password reset.</p>
+      <a href="${resetLink}">Reset Password</a>
+      <p>This link expires in 15 minutes.</p>
+    `,
+  },
+  {
+    headers: {
+      "api-key": process.env.BREVO_API_KEY,
+      "Content-Type": "application/json",
+    },
+  }
+);
 
     res.json({
       message: "Password reset email sent.",
