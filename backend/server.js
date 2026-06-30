@@ -33,7 +33,7 @@ app.get("/smtp-test", (req, res) => {
     res.status(500).send(err.message);
   });
 });
-const transporter = require("./config/mail");
+
 
 app.get("/api/test-email", async (req, res) => {
   try {
