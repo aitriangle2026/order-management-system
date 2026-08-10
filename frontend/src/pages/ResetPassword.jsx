@@ -5,7 +5,7 @@ import tclLogo from "../assets/a2.png";
 import "./auth.css";
 import { LeftPanel } from "./Login";
 
-const API = "https://ordermanagement-production-2dc1.up.railway.app/api/auth";
+const API = "https://order-management-system-production-72c4.up.railway.app/api/auth";
 
 export default function ResetPassword() {
   const { token } = useParams();

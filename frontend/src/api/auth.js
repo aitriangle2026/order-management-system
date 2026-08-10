@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL =
-  "https://ordermanagement-production-2dc1.up.railway.app/api/auth";
+  "https://order-management-system-production-72c4.up.railway.app/api/auth";
 
 export const login = async (
   username,
